@@ -1,4 +1,17 @@
 <h1>Recipes for <%= @search %></h1>
 <p>------------------------------------------------</p>
 <p>Find me in app/views/recipes/index.html.erb</p>
-<p><%= @recipes %></p>
+<table border="1">
+    <tr>
+        <th>Photo</th>
+        <th>Title</th>
+        <th>Ingredients</th>
+    </tr>
+    <% @recipes.each do |recipe| %>
+        <tr>
+            <td><%= image_tag(recipe["thumbnail"])%></td>
+            <td><%= recipe["title"] %></td>
+            <td><%= recipe["ingredients"]%></td>
+        </tr>
+    <% end %>
+</table>
