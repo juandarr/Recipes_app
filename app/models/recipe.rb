@@ -7,6 +7,10 @@ class Recipe
     format :json
 
     def self.for ( keyword = 'chocolate' )
-        get('', query: { q: keyword })['results']
+        begin 
+            get('', query: { q: keyword })['results']
+        rescue Exception => e
+            ['No results for this search term', e.message]
+        end
     end
 end
